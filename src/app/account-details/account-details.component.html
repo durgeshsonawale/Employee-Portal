@@ -1,0 +1,49 @@
+<div id="detail">
+  <h2><b>Accout Details</b></h2>
+  <table class="table table-th-block">
+    <tbody>
+      <tr>
+        <th class="active">Bank Name:</th>
+        <td>{{ acDetails.bankName }}</td>
+      </tr>
+      <tr>
+        <th class="active">IFSC Code:</th>
+        <td>{{ acDetails.ifscCode }}</td>
+      </tr>
+      <tr>
+        <th class="active">Branch:</th>
+        <td>{{ acDetails.branch }}</td>
+      </tr>
+      <tr>
+        <th class="active">Account Holder:</th>
+        <td>{{ acDetails.nameOnAccount }}</td>
+      </tr>
+      <tr>
+        <th class="active">Account Number:</th>
+        <td>{{ acDetails.accountNumber }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="container my-2" *ngIf="editCheck === ''; else editSection">
+    <div class="justify-content-center">
+      <div class="col-auto">
+        <button class="btn btn-primary" (click)="add()" type="button">
+          + Add Account Details
+        </button>
+      </div>
+    </div>
+  </div>
+  
+  <ng-template #editSection>
+    <div class="container my-2">
+      <div class="justify-content-center">
+        <div class="col-auto">
+          <button class="btn btn-primary" (click)="add()" type="button">
+            Edit Details
+          </button>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+  
+</div>

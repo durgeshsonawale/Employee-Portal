@@ -1,0 +1,66 @@
+<mat-toolbar>
+  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+    Employee-Portal
+  </button>
+  
+  <span class="example-spacer"></span>
+  
+  <button mat-icon-button  (click)="exit()" class="example-icon" aria-label="Example icon-button with share icon">
+    <mat-icon>exit_to_app</mat-icon>
+  </button>
+</mat-toolbar>
+<!-- <mat-icon>exit_to_app</mat-icon> -->
+
+<section style="background-color: #eee my-2">
+  <div class="container py-1">
+    <div class="row">
+      <div class="col">
+        
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-3">
+        <div class="card my-2">
+          <div class="card-body text-center">
+            <img
+              src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp"
+              alt="avatar"
+              class="rounded-circle img-fluid"
+              style="width: 150px"
+            />
+            <h3 class="my-3">Hey, {{employeeDetails.firstName}}</h3>
+            <p class="text-muted mb-1">{{employeeDetails.designationId.designationTitle
+            }}</p>
+            <p class="text-muted mb-4">Mumbai,India</p>
+            <div class="d-flex justify-content-center mb-2">
+              <button type="button" class="btn btn-primary">Edit Profile</button>
+              <!-- <button type="button" class="btn btn-outline-primary ms-1"> -->
+                <!-- Message
+              </button> -->
+            </div>
+          </div>
+        </div>
+        <div class="card mb-4 mb-lg-0">
+          <div class="card-body p-0">
+            <ul class="list-group list-group-flush rounded-3">
+              <li class="list-group-item d-flex justify-content-center p-3">
+                <a class="mb-0 no-underline"  routerLink="./">PROFILE</a>
+              </li>
+              <li class="list-group-item d-flex justify-content-center p-3">
+                <a class="mb-0 no-underline"  routerLink="./leave">LEAVE</a>
+              </li>
+              <li class="list-group-item d-flex justify-content-center p-3">
+                <a class="mb-0 no-underline"  routerLink="./expenses" > EXPENSES</a>
+              </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-9">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,30 @@
+.button-container {
+    display: flex;
+    justify-content:space-evenly;
+    width: 100%; 
+}
+form {
+    padding:40px;
+  }
+  .title {
+    padding: 10px;
+    justify-content: center;
+    display: flex;
+  }
+  
+  .title h4 {
+    font-size: x-large;
+    font-weight: bold;
+  }
+  .actions {
+    /* background-color: #ebeef1; Blue button background color */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    margin-top: 20px;
+  }
+ 
+
+  .btn:hover {
+    background-color: #86b3d699; /* Darker blue on hover */
+  }

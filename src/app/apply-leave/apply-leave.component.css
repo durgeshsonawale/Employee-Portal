@@ -1,0 +1,57 @@
+
+ 
+
+ 
+  mat-form-field {
+    width: 100%;
+    /* margin-bottom: 20px; */
+    /* background-color: #b8a2a2; */
+  }
+ 
+  /* Style the input fields */
+  .mat-input-element {
+    background-color: #b8a2a2; /* White background for input fields */
+    color: #333; /* Text color for input fields */
+  }
+ 
+  /* Style the form field underline */
+  .mat-form-field-underline {
+    background-color: rgb(102, 182, 182); /* Green underline color */
+  }
+ 
+  /* Style the form field hint and label */
+  .mat-form-field-label,
+  .mat-form-field-placeholder {
+    color: #4ca7af; /* Green text color for hint and label */
+  }
+ 
+  .actions {
+    /* background-color: #ebeef1; Blue button background color */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+ 
+
+  .btn:hover {
+    background-color: #86b3d699; /* Darker blue on hover */
+  }
+  form {
+    padding:40px;
+  }
+  .button-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%; 
+}
+.title {
+  padding: 10px;
+  justify-content: center;
+  display: flex;
+}
+
+.title h4 {
+  font-size: x-large;
+  font-weight: bold;
+}

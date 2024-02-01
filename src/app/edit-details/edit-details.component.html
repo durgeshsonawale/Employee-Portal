@@ -1,0 +1,30 @@
+<!-- your-component.component.html -->
+<div class="signup-modal">
+    <h2 class="title">Edit Account Details</h2>
+    <form [formGroup]="accountForm" (ngSubmit)="onSubmit()">
+    <mat-form-field>
+    <input matInput placeholder="Bank Name" formControlName="bankName" required>
+    <mat-error *ngIf="accountForm.get('bankName')?.hasError('required')">Bank Name is required</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+    <input matInput placeholder="Account Number" formControlName="accountNumber" required>
+    <mat-error *ngIf="accountForm.get('accountNumber')?.hasError('required')">Account Number is required</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+    <input matInput placeholder="IFSC Code" formControlName="ifscCode" required>
+    <mat-error *ngIf="accountForm.get('ifscCode')?.hasError('required')">IFSC Code is required</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+    <input matInput placeholder="Branch" formControlName="branch" required>
+    <mat-error *ngIf="accountForm.get('branch')?.hasError('required')">Branch name is required</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+    <input matInput placeholder="Account Name" formControlName="nameOnAccount" required>
+    <mat-error *ngIf="accountForm.get('nameOnAccount')?.hasError('required')">Account Name is required</mat-error>
+    </mat-form-field>
+    <div class="button-container">
+    <button class="btn btn-primary" [disabled]="accountForm.invalid" >Submit</button>
+    <button mat-button type="button" (click)="closeDialog()">Close</button>
+    </div>
+    </form>
+    </div>

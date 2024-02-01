@@ -1,0 +1,36 @@
+<div class="signup-modal">
+    <h2 class="title">Sign Up</h2>
+    <form (ngSubmit)="onSubmit()" #signupForm="ngForm">
+      <mat-form-field>
+        <input matInput placeholder="First Name" [(ngModel)]="firstName" name="firstName" required>
+        <mat-error *ngIf="signupForm.controls['firstName'].hasError('required')">First Name is required</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Last Name" [(ngModel)]="lastName" name="lastName" required>
+        <mat-error *ngIf="signupForm.controls['lastName'].hasError('required')">Last Name is required</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput type="password" placeholder="Password" [(ngModel)]="password" name="password" required>
+        <mat-error *ngIf="signupForm.controls['password'].hasError('required')">Password is required</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput [matDatepicker]="birthDatePicker" placeholder="Birth Date" [(ngModel)]="birthDate" name="birthDate" required>
+        <mat-datepicker-toggle matSuffix [for]="birthDatePicker"></mat-datepicker-toggle>
+        <mat-datepicker #birthDatePicker></mat-datepicker>
+        <mat-error *ngIf="signupForm.controls['birthDate'].hasError('required')">Birth Date is required</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Designation" [(ngModel)]="designation" name="designation">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput [matDatepicker]="joiningDatePicker" placeholder="Joining Date" [(ngModel)]="joiningDate" name="joiningDate" required>
+        <mat-datepicker-toggle matSuffix [for]="joiningDatePicker"></mat-datepicker-toggle>
+        <mat-datepicker #joiningDatePicker></mat-datepicker>
+        <mat-error *ngIf="signupForm.controls['joiningDate'].hasError('required')">Joining Date is required</mat-error>
+      </mat-form-field>
+      <div class="button-container">
+        <button class="btn btn-primary" type="submit" [disabled]="signupForm.invalid">Sign Up</button>
+        <button class="btn btn-danger" type="button" (click)="closeDialog()">Close</button>
+      </div>
+    </form>
+</div>
