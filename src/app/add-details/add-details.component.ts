@@ -22,6 +22,7 @@ export interface form{
 })
 export class AddDetailsComponent implements OnInit{
   accountForm!: FormGroup;
+  id:any;
   
  
   constructor(private fb: FormBuilder,private dialog:MatDialogRef<AddDetailsComponent>,private empService:EmployeeService,private accDetails:AccountDetailsService) {
@@ -36,6 +37,11 @@ export class AddDetailsComponent implements OnInit{
       branch: ['', Validators.required],
       nameOnAccount: ['', Validators.required],
     });
+    const userDataString = localStorage.getItem("userId");
+
+    if (userDataString !== null) {
+        this.id = JSON.parse(userDataString);
+     }
     
   }
  
@@ -48,7 +54,7 @@ export class AddDetailsComponent implements OnInit{
       branch:this.accountForm.get('branch')?.value,
       nameOnAccount: this.accountForm.get('nameOnAccount')?.value,
       employeeId:{
-        id:localStorage.getItem("userId")
+        id:this.id.id
       }
     }
     this.accDetails.addDetails(details).subscribe(a=>console.log(a));

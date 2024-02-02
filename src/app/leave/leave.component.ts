@@ -52,10 +52,10 @@ add() {
     
   }
   ngOnInit(): void {
-   this.employeeService.getEmployeeById(localStorage.getItem("userId")).subscribe(
+   this.employeeService.getEmployeeById().subscribe(
       employee=>{this.c=employee;this.employeeService.availableLeaves.next(this.c.availableLeaves)
     
-    this.leaveService.getAllLeaves(localStorage.getItem("userId")).subscribe((a)=>{
+    this.leaveService.getAllLeaves().subscribe((a)=>{
       //this.reload.allLeaves.next(a);
       this.reload.allLeaves.asObservable().subscribe(b=>{this.list=b;console.log(this.list);
       

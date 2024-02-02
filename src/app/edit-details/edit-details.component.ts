@@ -16,6 +16,7 @@ export class EditDetailsComponent {
 
 
   accountForm!: FormGroup;
+  id:any;
   
  
   constructor(private fb: FormBuilder,private dialog:MatDialogRef<EditDetailsComponent>,private empService:EmployeeService,private accDetails:AccountDetailsService,private editService:EditService) {
@@ -32,6 +33,11 @@ export class EditDetailsComponent {
       branch: [this.editService.accountDetEdit.branch, Validators.required],
       nameOnAccount: [this.editService.accountDetEdit.nameOnAccount, Validators.required],
     });
+    const userDataString = localStorage.getItem("userId");
+
+    if (userDataString !== null) {
+        this.id = JSON.parse(userDataString);
+     }
     
 
   }
@@ -45,10 +51,10 @@ export class EditDetailsComponent {
       branch:this.accountForm.get('branch')?.value,
       nameOnAccount: this.accountForm.get('nameOnAccount')?.value,
       employeeId:{
-        id:localStorage.getItem("userId")
+        id:this.id.id
       }
     }
-    this.accDetails.editDetails(details).subscribe(a=>console.log(a));
+    this.accDetails.editDetails(details).subscribe((a:string)=>console.log(a));
     
     
     this.dialog.close();

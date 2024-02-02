@@ -9,7 +9,7 @@ import { MatTable, MatTableModule } from '@angular/material/table';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {MatToolbarModule} from '@angular/material/toolbar';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
 import {FormControl, Validators, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
@@ -40,6 +40,7 @@ import { AddDetailsComponent } from './add-details/add-details.component';
 import { EditDetailsComponent } from './edit-details/edit-details.component';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSortModule} from '@angular/material/sort';
+import { JwtInterceptor } from './sign-up/JwtInterceptor';
 Chart.register(...registerables);
 
 
@@ -84,7 +85,11 @@ Chart.register(...registerables);
     MatSortModule
     
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: JwtInterceptor,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

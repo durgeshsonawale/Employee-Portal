@@ -12,13 +12,13 @@ export class AccountDetailsService {
 
   constructor(private http:HttpClient) { }
 
-  getDetailsbyId(id:any):Observable<AccountDetails>{
-    return this.http.get<AccountDetails>(`${this.api}/${id}`)
+  getDetailsbyId():Observable<any>{
+    return this.http.get<any>(`${this.api}`)
   }
   addDetails(data:any){
-    return this.http.post(this.api,data)
+    return this.http.post(this.api,data,{responseType:'text'})
   }
-  editDetails(data:any){
-    return this.http.put(this.api,data)
-  }
-}
+  editDetails(data:any):Observable<string>{
+    return this.http.put(this.api,data,{responseType:'text'})
+  
+  }}

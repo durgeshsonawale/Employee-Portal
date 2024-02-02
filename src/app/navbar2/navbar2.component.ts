@@ -9,6 +9,7 @@ import { Employee } from '../model/employee';
   styleUrls: ['./navbar2.component.css']
 })
 export class Navbar2Component implements  OnInit{
+  tokenBody:any
 exit() {
   localStorage.clear();
   this.route.navigate(["home"])
@@ -26,8 +27,13 @@ exit() {
 
   }
   ngOnInit(): void {
+    const userDataString = localStorage.getItem("userId");
+
+    if (userDataString !== null) {
+        this.tokenBody = JSON.parse(userDataString);
+     }
     
-    this.employeeService.getEmployeeById(localStorage.getItem("userId")).subscribe((a)=>this.employeeDetails=a)
+    this.employeeService.getEmployeeById().subscribe((a)=>this.employeeDetails=a)
   }
 
 

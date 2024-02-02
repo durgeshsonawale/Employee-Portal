@@ -13,7 +13,7 @@ import { SignUpComponent } from '../sign-up/sign-up.component';
 export class HomeComponent implements OnInit{
   //id:any;
   loginForm!: FormGroup;
-
+  token:any;
 
 
 constructor(private router : Router,private fb: FormBuilder,private employeeService:EmployeeService,private dialog:MatDialog){}
@@ -26,9 +26,11 @@ ngOnInit(): void {
 }
 OnLogin() {
   this.employeeService.validateEmployee(this.loginForm.get('email')?.value,this.loginForm.get('password')?.value).subscribe((a)=>
-  {localStorage.setItem("userId",a)
-    console.log(a);
-  if(a!=-1){
+  {
+  if(a!=null){
+    this.token=JSON.stringify(a)
+    localStorage.setItem("userId",this.token)
+    console.log(localStorage.getItem("userId"));
     this.router.navigate(['/employee'])
   }
   

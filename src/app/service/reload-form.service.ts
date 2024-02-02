@@ -10,7 +10,7 @@ export class ReloadFormService {
   allLeaves:BehaviorSubject<any> =new BehaviorSubject<any>(-1);
 
   constructor(private leaveService:LeaveService,private empService:EmployeeService) { 
-    this.leaveService.getAllLeaves(localStorage.getItem("userId")).subscribe((a)=>{this.allLeaves.next(a)})
+    this.leaveService.getAllLeaves().subscribe((a)=>{this.allLeaves.next(a)})
 
   }
 }

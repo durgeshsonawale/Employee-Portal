@@ -39,7 +39,11 @@ export class AddExpensesComponent implements OnInit {
     });
   }
   ngOnInit(): void {
-    this.id=localStorage.getItem("userId");
+    const userDataString = localStorage.getItem("userId");
+
+    if (userDataString !== null) {
+        this.id = JSON.parse(userDataString);
+     }
   }
  
   validate(controlName: string): boolean {
@@ -55,7 +59,7 @@ export class AddExpensesComponent implements OnInit {
       date: this.leaveService.convertData(this.demoForm.get('date')?.value) ,
       expense1:this.demoForm.get('expense1')?.value ,
      employeeId: {
-      id:this.id
+      id:this.id.id
      }
     }
     console.log(this.demoForm.value);
@@ -63,7 +67,8 @@ export class AddExpensesComponent implements OnInit {
    // this.router.navigate(['expense'])
     }
     
-    );this.dialogRef.close();
+    );
+    this.dialogRef.close();
 
 
     

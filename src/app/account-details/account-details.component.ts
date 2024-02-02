@@ -14,6 +14,7 @@ import { EditDetailsComponent } from '../edit-details/edit-details.component';
   styleUrls: ['./account-details.component.css']
 })
 export class AccountDetailsComponent implements OnInit{
+  tokenBody:any;
   editCheck:any;
 add() {
   this.dialog.open(EditDetailsComponent, {
@@ -35,8 +36,13 @@ add() {
     constructor(private accService : AccountDetailsService, private empService : EmployeeService,private dialog:MatDialog,private editService:EditService ){}
 
   ngOnInit(): void {
+    const userDataString = localStorage.getItem("userId");
+
+    if (userDataString !== null) {
+        this.tokenBody = JSON.parse(userDataString);
+     }
     
-      this.accService.getDetailsbyId(localStorage.getItem("userId")).subscribe((a) => {
+      this.accService.getDetailsbyId().subscribe((a) => {
         if(!a)
         {
           console.log("json is empty")

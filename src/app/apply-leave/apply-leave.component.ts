@@ -30,7 +30,11 @@ export class ApplyLeaveComponent {
  
   ngOnInit() {
     this.initForm();
-    this.id=localStorage.getItem("userId")
+    const userDataString = localStorage.getItem("userId");
+
+    if (userDataString !== null) {
+        this.id = JSON.parse(userDataString);
+     }
   }
  
   initForm() {
@@ -69,12 +73,12 @@ export class ApplyLeaveComponent {
       toDate: this.leaveService.convertData(this.leaveForm.get('toDate')?.value) ,
       status:this.leaveForm.get('status')?.value ,
      employeeId: {
-      id:this.id
+      id:this.id.id
      }
     }
     console.log(this.leaveForm.value);
     this.leaveService.applyLeave(formsdata).subscribe(a => {console.log("Leave applied.")
-    this.leaveService.getAllLeaves(localStorage.getItem("userId")).subscribe((a)=>{
+    this.leaveService.getAllLeaves().subscribe((a)=>{
       this.reload.allLeaves.next(a);
       //console.log(a);
     })

@@ -14,8 +14,9 @@ export class EmployeeService {
 
 
   constructor(private http:HttpClient) { }
-  getEmployeeById(id:any):Observable<Employee>{
-    return this.http.get<Employee>(`${this.api}/${id}`);
+  getEmployeeById():Observable<any>{
+    //console.log(id.token + "assssssss")
+    return this.http.get<any>(`${this.api}`)
   }
   //LogIn/{name}/{password}
   validateEmployee(name:string,password:string):Observable<any>{

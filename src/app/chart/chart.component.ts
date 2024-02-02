@@ -13,7 +13,7 @@ export class ChartComponent implements OnInit{
 
   }
   ngOnInit(): void {
-    this.leaveService.getMonthlyData(localStorage.getItem("userId")).subscribe((a)=>{
+    this.leaveService.getMonthlyData().subscribe((a)=>{
       console.log(a)
       this.RenderChart(Object.keys(a),Object.values(a))
     

@@ -8,11 +8,11 @@ export class LeaveService {
   api='http://localhost:8080/leave'
 
   constructor(private http:HttpClient) { }
-  getAllLeaves(id:any){
-    return this.http.get(`${this.api}/${id}`)
+  getAllLeaves(){
+    return this.http.get(`${this.api}`)
   }
   applyLeave(leave:any){
-    return this.http.post( `http://localhost:8080/leave`,leave)
+    return this.http.post( `http://localhost:8080/leave`,leave,{responseType:'text'})
   }
 
   convertData(date1 : any){
@@ -35,9 +35,9 @@ return formattedDate; // Output: 2024-01-01
   }
 
 
-  getMonthlyData(id:any){
+  getMonthlyData(){
     //console.log(this.http.get(`${this.api}/monthly/${id}`));
-    return this.http.get(`${this.api}/monthly/${id}`)
+    return this.http.get(`${this.api}/monthly`)
   }
 }
 

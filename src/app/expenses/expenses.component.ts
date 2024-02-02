@@ -61,7 +61,7 @@ export class ExpensesComponent {
   ) {}
   ngOnInit(): void {
     this.expenseService
-      .getById(localStorage.getItem('userId'))
+      .getById()
       .subscribe((a) => {
         this.list = a;
         this.dataSource1 = new MatTableDataSource<any>(this.list[0]);

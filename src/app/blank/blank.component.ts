@@ -8,6 +8,7 @@ import { Employee } from '../model/employee';
   styleUrls: ['./blank.component.css']
 })
 export class BlankComponent implements OnInit{
+  tokenBody:any
   employeeDetails:Employee={
     firstName: "",
     lastName: "",
@@ -19,8 +20,12 @@ export class BlankComponent implements OnInit{
   }
   constructor(private employeeService:EmployeeService){}
   ngOnInit(): void {
-    
-    this.employeeService.getEmployeeById(localStorage.getItem("userId")).subscribe((a)=>{this.employeeDetails=a;console.log(this.employeeDetails)})
+    const userDataString = localStorage.getItem("userId");
+
+if (userDataString !== null) {
+    this.tokenBody = JSON.parse(userDataString);
+ }
+    this.employeeService.getEmployeeById().subscribe((a)=>{this.employeeDetails=a;console.log(this.employeeDetails)})
   }
 
 }
